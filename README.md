@@ -61,6 +61,17 @@ http://localhost:3000/docs
 
 <br>
 
+### **Design explanation**:
+
+- To track the assets in motion, I would use the GPS technology<br> Every GPS device in a battery would be transmitting location coordinates data along with other crucial data to the API. The API would then store this information along with the bike Id or driver ID (if possible to assign it).<br><br>It would be ideal to first pass the data in a queue so as to avoid errors that might arise in queerying the data in a time series manner.
+<br><br>
+
+- To calculate the distance traveled by each driver, the system would need to compare the location of the battery at the start of the journey (swap-in) and the end of the journey (swap-out). To calculate the total energy consumed by each driver, the system would use the data from the battery at (**swap-in** **minus battery power at swap-out**) which would give the energy consumption in watt-hours, and convert it to money amount using the rate set by Ampersand.
+
+- To predict and optimize the number of batteries needed at each station, the system would use the historical data of battery swaps and location data to train a machine learning model. The model would then be used to predict the number of batteries needed at each station in the future, this would help ensure that there are always enough batteries at each station to meet the demand.
+
+<br>
+
 #### **Data Organization**:
 
 - Ideal database would be a database optimized for time series data, and also supports relationships (More like a relational time series optimized database) \
