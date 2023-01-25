@@ -1,64 +1,38 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# **Amper-Ops**
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Uses [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository for prototyping.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+### **Installation**
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+### **Create .env file and Paste below**
+```
+NODE_ENV=development
+NODE_PORT=3000
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+MONGO_URI=mongodb+srv://Amper-Ops-Trial:WillDeleteItsSelf@amperops-trial.yhciqq1.mongodb.net/?retryWrites=true&w=majority
+MONGO_USERNAME=Amper-Ops-Trial
+MONGO_PASS=WillDeleteItsSelf
 ```
 
-## Test
+### **Running the app**
+
+```bash
+# watch mode
+$ npm run start:dev
+```
+
+### **Test**
 
 ```bash
 # unit tests
 $ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Routes & Documentation
+## **Sample Routes & Documentation**
 
 After startin the server with npm run start:dev <br>
 Visit http://localhost:3000/docs for simple swagger documentation
@@ -75,14 +49,19 @@ http://localhost:3000/docs
 
 ### **The above Infrustructure Design** **consists**:
 
+- Amper-Ops Cloud or any networking infrustructure configuration
+- Public and private subnets 
 - A GPS Emitter
 - A cloud API gateway/endpoint that acts as a trigger to a cloud function (In this scenario AWS)
-- Main API Service (Micro for calculations and swapping)
+- A cloud function that is supposed to parse the GPS data and stores them to the database, it ***might need to use a queue service*** for a reliable time series data 
+- Main API Service (Micro for calculations and swapping endpoints)
 - Frontend Web analytics server
 - Analytics API
-- Time series optimized database
+- Time series optimized database (hosted in a private subnet for elevated security)
 
-##### Data Organization:
+<br>
+
+#### **Data Organization**:
 
 - Ideal database would be a database optimized for time series data, and also supports relationships (More like a relational time series optimized database) \
   (For easy of API prototyping I used a MongoDb cluster hosted on MongoDb Atlas) \
