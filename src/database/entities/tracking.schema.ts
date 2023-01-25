@@ -24,8 +24,8 @@ export class Tracking {
   @Prop({ required: true, type: ObjectId }) // ref: COLLECTIONS.DRIVER
   driver: ObjectId;
 
-  @Prop({ required: true, type: ObjectId, ref: COLLECTIONS.SWAP }) // ID of swap related to this Battery
-  swap: ObjectId;
+  @Prop({ required: true, default: false }) // ID of swap related to this Battery
+  isCalculated: boolean;
 }
 
 export const TrackingSchema = SchemaFactory.createForClass(Tracking);

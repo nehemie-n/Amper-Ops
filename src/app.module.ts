@@ -9,7 +9,18 @@ import { TrackingsModule } from './trackings/trackings.module';
   imports: [
     DatabaseModule,
     MongooseModule.forRoot(process.env.MONGO_URI),
+
+    /**
+     * Module in charge of
+     * 1. SwapIn battery
+     * 2. SwapOut battery
+     */
     SwapsModule,
+    /**
+     * Module for storing battery tracking
+     * 1. Can be a microservice and be moved to a function (AWS Lambda or similar)
+     * 2. Can be integrated with an SQS
+     */
     TrackingsModule,
   ],
   controllers: [AppController],
