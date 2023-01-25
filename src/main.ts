@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { Logger } from '@nestjs/common/services';
+import { Application } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,6 +23,11 @@ async function bootstrap() {
   /**
    * API Start
    */
-  await app.listen(process.env.NODE_PORT);
+  await app.listen(process.env.NODE_PORT, () => {
+    const logger = new Logger('App');
+    logger.verbose(
+      'API Server Started at Port: http://localhost:' + process.env.NODE_PORT,
+    );
+  });
 }
 bootstrap();

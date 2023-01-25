@@ -1,15 +1,16 @@
-import { DatabaseModule } from './database/database.module';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
+import { DatabaseModule } from './database/database.module';
 import { SwapsModule } from './swaps/swaps.module';
 import { TrackingsModule } from './trackings/trackings.module';
 
 @Module({
   imports: [
-    DatabaseModule,
+    ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGO_URI),
-
+    DatabaseModule,
     /**
      * Module in charge of
      * 1. SwapIn battery

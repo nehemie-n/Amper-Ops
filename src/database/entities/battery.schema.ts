@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Model, Types } from 'mongoose';
+import { HydratedDocument, Model, Schema as MongooseSchema } from 'mongoose';
 
 export type BatteryDocument = HydratedDocument<Battery>;
 export type BatteryModel = Model<BatteryDocument>;
@@ -18,7 +18,7 @@ export class Battery {
   @Prop()
   capacity: number;
 
-  @Prop({ type: Types.Subdocument })
+  @Prop({ type: MongooseSchema.Types.Map, of: String })
   details: Object; // Other battery details
 }
 

@@ -1,7 +1,4 @@
-import {
-  IsMongoId,
-  IsNumber,
-} from 'class-validator/types/decorator/decorators';
+import { IsMongoId, IsNumber } from 'class-validator';
 
 class SwapDto {
   /**
