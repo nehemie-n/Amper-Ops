@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { Swap, SwapDocument, SwapModel } from 'src/database/entities';
-import { CreateSwapInDto, CreateSwapOutDto } from './dto/create-swap.dto';
+import { ForbiddenException } from '@nestjs/common/exceptions';
 import { InjectModel } from '@nestjs/mongoose';
-import { ObjectId } from 'mongodb';
+import {
+  Swap,
+  SwapDocument,
+  SwapModel,
+  Tracking,
+  TrackingModel,
+} from '../database/entities';
 import { CalculateService } from './calculate.service';
+import { CreateSwapInDto, CreateSwapOutDto } from './dto/create-swap.dto';
 
 /**
  *
@@ -15,6 +21,7 @@ export class SwapsService {
   constructor(
     private calculateService: CalculateService,
     @InjectModel(Swap.name) private swapModel: SwapModel,
+    @InjectModel(Tracking.name) private trackingModel: TrackingModel,
   ) {}
 
   /**
@@ -23,6 +30,9 @@ export class SwapsService {
    */
   async swapIn(dto: CreateSwapInDto): Promise<SwapDocument> {
     const lastSwap = await this.getLastSwapOut(dto.battery);
+    if (!lastSwap) {
+      throw new ForbiddenException('Could not find the last record of Swap');
+    }
     const distance: number = await this.calculateService.calculate(
       dto.battery,
       dto.driver,
@@ -54,8 +64,8 @@ export class SwapsService {
    *
    * @param dto
    */
-  swapout(dto: CreateSwapOutDto) {
-    return this.swapModel.create({
+  async swapout(dto: CreateSwapOutDto) {
+    const swap = await this.swapModel.create({
       ...dto,
       in: false, // getting the battery
     });

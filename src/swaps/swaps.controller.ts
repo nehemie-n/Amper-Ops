@@ -12,7 +12,7 @@ export class SwapsController {
    *
    * @param createSwapInDto
    */
-  @Post()
+  @Post("in")
   swapIn(@Body() createSwapInDto: CreateSwapInDto) {
     return this.swapsService.swapIn(createSwapInDto);
   }
@@ -22,7 +22,7 @@ export class SwapsController {
    *
    * @param CreateSwapOutDto
    */
-  @Post()
+  @Post("out")
   swapOut(@Body() createSwapOutDto: CreateSwapOutDto) {
     return this.swapsService.swapout(createSwapOutDto);
   }

@@ -8,9 +8,6 @@ export type SwapModel = Model<SwapDocument>;
 
 @Schema({
   _id: true,
-  timeseries: {
-    timeField: 'createdAt',
-  },
   timestamps: {
     createdAt: true,
     updatedAt: true,
@@ -30,7 +27,7 @@ export class Swap {
   staff: ObjectId;
 
   @Prop({ required: true, type: ObjectId, ref: COLLECTIONS.STATION })
-  Station: ObjectId;
+  station: ObjectId;
 
   @Prop({ required: true, type: ObjectId, ref: COLLECTIONS.BATTERY })
   battery: ObjectId;

@@ -5,7 +5,7 @@ import {
   Tracking,
   TrackingDocument,
   TrackingModel,
-} from 'src/database/entities';
+} from '../database/entities';
 
 @Injectable()
 export class TrackingsService {

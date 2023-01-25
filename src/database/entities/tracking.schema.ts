@@ -11,6 +11,7 @@ export type TrackingModel = Model<TrackingDocument>;
   _id: true,
   timeseries: {
     timeField: 'createdAt',
+    metaField: 'metadata',
   },
   timestamps: { createdAt: true, updatedAt: true },
 })

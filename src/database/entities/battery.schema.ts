@@ -6,9 +6,6 @@ export type BatteryModel = Model<BatteryDocument>;
 
 @Schema({
   _id: true,
-  timeseries: {
-    timeField: 'createdAt',
-  },
   timestamps: {
     createdAt: true,
     updatedAt: true,

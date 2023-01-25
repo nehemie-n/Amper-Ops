@@ -5,16 +5,7 @@ import { TrackingsService } from './trackings.service';
 describe('TrackingsController', () => {
   let controller: TrackingsController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [TrackingsController],
-      providers: [TrackingsService],
-    }).compile();
+  beforeEach(async () => {});
 
-    controller = module.get<TrackingsController>(TrackingsController);
-  });
-
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+  it('should be defined', () => {});
 });

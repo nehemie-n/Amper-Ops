@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
-import { Tracking, TrackingModel } from 'src/database/entities';
-import { Coordinates } from 'src/database/entities/location';
+import { Tracking, TrackingModel } from '../database/entities';
+import { Coordinates } from '../database/entities/location';
 
 const EARTH_RADIOS = 6371; // Earth's radius in kilometers
 
@@ -24,6 +24,15 @@ export class CalculateService {
     modify = true,
   ): Promise<number> {
     const tracks = await this.fetchCoordinates(battery, driver, modify);
+    return CalculateService.tracksDistance(tracks);
+  }
+
+  /**
+   * Static for now for testing
+   * @param tracks
+   * @returns
+   */
+  static tracksDistance(tracks: Tracking[]): number {
     let distance = 0;
     for (let i = 0; i < tracks.length - 1; i++) {
       distance += this.haversineDistance(
@@ -33,8 +42,16 @@ export class CalculateService {
     }
     return distance;
   }
-
-  private haversineDistance(coord1: Coordinates, coord2: Coordinates) {
+  /**
+   *
+   * https://en.wikipedia.org/wiki/Haversine_formula
+   *
+   * Earth KM Distance between each two coordinates
+   * @param coord1
+   * @param coord2
+   * @returns
+   */
+  private static haversineDistance(coord1: Coordinates, coord2: Coordinates) {
     const lat1 = coord1.lat;
     const lon1 = coord1.lng;
     const lat2 = coord2.lat;

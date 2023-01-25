@@ -6,9 +6,6 @@ export type StationDocument = HydratedDocument<Station>;
 
 @Schema({
   _id: true,
-  timeseries: {
-    timeField: 'createdAt',
-  },
   timestamps: {
     createdAt: true,
     updatedAt: true,

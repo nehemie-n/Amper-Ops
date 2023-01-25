@@ -10,7 +10,15 @@ async function bootstrap() {
   /**
    * Set up validation
    */
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      stopAtFirstError: true,
+      forbidNonWhitelisted: true,
+      // forbidUnknownValues: true,
+      transform: true,
+      // whitelist: false,
+    }),
+  );
   /**
    * Logger
    * Just simple logger

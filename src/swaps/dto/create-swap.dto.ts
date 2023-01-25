@@ -8,7 +8,7 @@ class SwapDto {
   staff: string;
 
   @IsMongoId()
-  Station: string;
+  station: string;
 
   @IsMongoId()
   battery: string;
