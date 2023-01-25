@@ -1,4 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { ApiResponse } from '@nestjs/swagger';
+import { SwapDocument } from 'src/database/entities';
 import { CreateSwapInDto, CreateSwapOutDto } from './dto/create-swap.dto';
 import { SwapsService } from './swaps.service';
 
@@ -12,7 +14,7 @@ export class SwapsController {
    *
    * @param createSwapInDto
    */
-  @Post("in")
+  @Post('in')
   swapIn(@Body() createSwapInDto: CreateSwapInDto) {
     return this.swapsService.swapIn(createSwapInDto);
   }
@@ -22,8 +24,8 @@ export class SwapsController {
    *
    * @param CreateSwapOutDto
    */
-  @Post("out")
-  swapOut(@Body() createSwapOutDto: CreateSwapOutDto) {
+  @Post('out')
+  swapOut(@Body() createSwapOutDto: CreateSwapOutDto): Promise<SwapDocument> {
     return this.swapsService.swapout(createSwapOutDto);
   }
 }

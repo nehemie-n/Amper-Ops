@@ -69,5 +69,6 @@ export class SwapsService {
       ...dto,
       in: false, // getting the battery
     });
+    return swap;
   }
 }

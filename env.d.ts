@@ -1,3 +1,7 @@
+/**
+ * Types for NodeJs
+ * Specifically environment variables typing
+ */
 declare global {
   namespace NodeJS {
     interface ProcessEnv {

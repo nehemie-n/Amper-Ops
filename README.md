@@ -58,15 +58,15 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Routers & Documentation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+After startin the server with npm run start:dev <br>
+Visit http://localhost:3000/docs for simple swagger documentation
 
-## Stay in touch
+<br>
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+<br>
 
 ## License
 
